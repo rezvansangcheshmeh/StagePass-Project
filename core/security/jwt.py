@@ -1,10 +1,12 @@
 # core/security/jwt.py
 from datetime import datetime, timedelta, timezone
-from typing import Any, Dict
+from typing import Any, Dict, cast  # ✅ cast اضافه شد
 
 import jwt
 
-from core.config.settings import settings
+from core.config.settings import get_settings
+
+settings = get_settings()
 
 
 def create_access_token(
@@ -21,8 +23,12 @@ def create_access_token(
     if extra:
         payload.update(extra)
 
-    return jwt.encode(payload, settings.jwt_secret, algorithm=settings.jwt_algorithm)
+    return cast(
+        str, jwt.encode(payload, settings.jwt_secret, algorithm=settings.jwt_algorithm)
+    )  # ✅
 
 
 def decode_token(token: str) -> Dict[str, Any]:
-    return jwt.decode(token, settings.jwt_secret, algorithms=[settings.jwt_algorithm])
+    return cast(
+        Dict[str, Any], jwt.decode(token, settings.jwt_secret, algorithms=[settings.jwt_algorithm])
+    )  # ✅

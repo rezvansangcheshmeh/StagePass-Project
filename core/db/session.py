@@ -11,7 +11,7 @@ settings = get_settings()
 # -------------------------
 engine = create_async_engine(
     settings.postgres_url,  # همیشه Postgres برای اپ
-    echo=settings.debug,
+    echo=settings.DEBUG,
     future=True,
 )
 
@@ -25,7 +25,7 @@ SessionLocal = sessionmaker(
 # Testing Database (SQLite in-memory)
 # -------------------------
 test_engine = create_async_engine(
-    settings.test_database_url,
+    settings.TEST_DATABASE_URL,
     echo=False,
     future=True,
 )

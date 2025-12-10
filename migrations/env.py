@@ -1,11 +1,13 @@
 from logging.config import fileConfig
-from sqlalchemy import engine_from_config, pool
+
 from alembic import context
+from sqlalchemy import engine_from_config, pool
+
+from apps import model_list  # noqa
 
 # Import پروژه
 from core.config.settings import get_settings
 from core.db.base import Base
-from apps import model_list  # همه مدل‌ها از apps/__init__.py
 
 # Alembic Config
 config = context.config

@@ -1,12 +1,12 @@
 # core/security/password.py
 from passlib.context import CryptContext
 
-_pwd_context = CryptContext(schemes=["argon2", "bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 
 
-def hash_password(plain: str) -> str:
-    return _pwd_context.hash(plain)
+def hash_password(password: str) -> str:
+    return pwd_context.hash(password)
 
 
-def verify_password(plain: str, hashed: str) -> bool:
-    return _pwd_context.verify(plain, hashed)
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    return pwd_context.verify(plain_password, hashed_password)
