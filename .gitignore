@@ -1,0 +1,15 @@
+venv
+__pycache__
+
+.env
+.env.dev
+.env.test
+.env.prod
+
+
+.ruff_cache
+.mypy_cache
+.pytest_cache
+
+.coverage
+help.txt

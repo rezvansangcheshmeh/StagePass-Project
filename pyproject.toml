@@ -1,0 +1,29 @@
+[tool.black]
+line-length = 100
+target-version = ['py312']
+skip-string-normalization = true
+
+[tool.isort]
+profile = "black"
+line_length = 100
+multi_line_output = 3
+include_trailing_comma = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+select = ["E", "F", "W", "C", "B", "I"]
+ignore = ["E203", ]
+
+[tool.mypy]
+plugins = []
+strict = true
+ignore_missing_imports = true
+
+[tool.coverage.run]
+branch = true
+source = ["apps", "core"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
