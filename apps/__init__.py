@@ -2,7 +2,8 @@
 
 from fastapi.routing import APIRouter
 
+from .accounts.users import User
 from .landing import landing_router
 
 router_list: list[APIRouter] = [landing_router]
-# model_list = []
+model_list = [User]
